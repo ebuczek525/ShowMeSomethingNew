@@ -1,33 +1,36 @@
 /* Here's the CSS file for the webpage */
 
 html {
-	background-color: #221F1F;
+  background-color: #221F1F;
 }
 body {
-	color: white;
+  color: white;
 }
 #head2 {
-	position: relative;
+  position: relative;
 }
 #head {
-	height: 200px;
-	width: 100%;
-	background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/036ef61f-648d-4ded-a3a7-c5d58be63f37/7b1914af-78dc-4e1d-9d12-467af141f47f/US-en-20190401-popsignuptwoweeks-perspective_alpha_website_small.jpg");
-	opacity: 0.5;
-	background-repeat: no-repeat; 
-	margin-bottom: 100px;
+  height: 200px;
+  width: 100%;
+  background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/036ef61f-648d-4ded-a3a7-c5d58be63f37/7b1914af-78dc-4e1d-9d12-467af141f47f/US-en-20190401-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+  opacity: 0.5;
+  background-repeat: no-repeat; 
+  margin-bottom: 100px;
 }
 #headtext {
-	font-size: 60px;
+  font-size: 60px;
+  opacity: 1;
+  color: white;
 }
 #box {
-  width: 200px;
-  height: 270px;
+  width: 250px;
+  height: 550px;
   margin: auto;
   border: solid;
   border-width: 2px;
   border-color: white;
+  text-align: center;
 }
 #foot {
-	margin-top: 100px;
+  margin-top: 100px;
 }
