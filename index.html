@@ -3,27 +3,36 @@
 <head>
 	<title>Find new movies and tv shows!</title>
 	<link rel="stylesheet" type="text/css" href="./styles/style.css">
-  <!-- <script src="./scripts/script.js"></script> saved for when we need it !-->
+    <script src="./scripts/script.js"></script> 
 </head>
 <body>
 
   	<div id="head">
-  	<br><br><br><br><br>
-		<div id="head2">
-			<h1 id="headtext">ShowMeSomethingNew</h1>
-		</div>
+  	<br><br><br><br><br><br><br><br><br><br><br>
 	<hr>
 	</div>
 
-	<div id="box">
-	<p>Genre:</p>
+	<h1 align="middle" id="headtext">ShowMeSomethingNew</h1>
 
+	<div id="box">
 	<form action="/action_page.php">
-  	<select name="genre"> <!--Here's the genre category, will have to do this for each one i suppose !-->
+
+	<div class="category_div" id="category_div">
+		<p>Type:</p>
+        <select id="type" name="type" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+        <option value="">Select type</option>
+        <option value="series">Series</option>
+        <option value="movie">Movie</option>
+        </select>
+    </div>
+
+    <p>Genre:</p>
+  	<select multiple name="genre">
+  	  <option value="Any">Any</option>
       <option value="Action">Action</option>
-      <option value="Adventurenime">Anime</option>
-      <option value="Britishbritish">British</option>
-      <option value="Classic and Cultclacult">Classic and Cult</option>
+      <option value="Anime">Anime</option>
+      <option value="British">British</option>
+      <option value="Classic and Cult">Classic and Cult</option>
       <option value="Comedy">Comedy</option>
       <option value="Crime">Crime</option>
       <option value="Documentaries">Documentaries</option>
@@ -42,20 +51,42 @@
       <option value="Teen">Teen</option>
       <option value="Thriller">Thriller</option>
  	</select>
- 	<br>
+ 	<br><br>
 
- 	<p>Age Rating:</p>
-    <select name="age">
-      <option value="y">TV-Y</option>
-      <option value="y7">TV-Y7</option>
-      <option value="g">TV-G</option>
-      <option value="pg">TV-PG</option>
-      <option value="14">TV-14</option>
-      <option value="ma">TV-MA</option>
+ 	<div class="sub_category_div" id="sub_category_div">
+ 		<p>Age Rating:</p>
+        <script type="text/javascript" language="JavaScript">
+        document.write('<select name="rating" id="rating"><option value="">Select rating</option></select>')
+        </script>
+        <noscript>
+        <select id="rating" name="rating">
+            <option value="Any">Any</option>
+            <option value="y">TV-Y</option>
+            <option value="y7">TV-Y7</option>
+            <option value="g">TV-G</option>
+            <option value="pg">TV-PG</option>
+            <option value="14">TV-14</option>
+            <option value="ma">TV-MA</option>
+        </select>
+        </noscript>
+    </div>
+
+    <p>IMDB Score:</p>
+    <select name="score">
+      <option value="1">1+</option>
+      <option value="2">2+</option>
+      <option value="3">3+</option>
+      <option value="4">4+</option>
+      <option value="5">5+</option>
+      <option value="6">6+</option>
+      <option value="7">7+</option>
+      <option value="8">8+</option>
+      <option value="9">9+</option>
     </select>
 
     <p>Timeframe:</p>
     <select name="timeframe">
+      <option value="Any">Any</option>
       <option value="50s">50s</option>
       <option value="60s">60s</option>
       <option value="70s">70s</option>
@@ -67,11 +98,18 @@
   		<br><br>
   		<input type="submit">
 	</form>
-	</div>
+
+  <div class="search-container">
+    	<form action="/action_page.php">
+      	<p>Or:</p>
+      	<input type="text" placeholder="Search By Title">
+      	<button type="submit">Submit</button>
+      </form>
+    </div>
 
 	<div id="foot">
 	<hr>
 	<p align="middle">Made by Erik Buczek and John O'Neil for SSW 215</p>
 	</div>
 
-</body>		
+</body>				
