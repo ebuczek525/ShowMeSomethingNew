@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -8,30 +9,76 @@
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
-
-    <div id="head">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <hr>
-  </div>
+<body>
+    s
 
     <strong><p style="font-size:80px" id="smsnew">ShowMeSomethingNew</p></strong>
 
+    <form align="middle" id="catForm">
+
+        <h3 style="color:white">Type:</h3>
+        <select id="type" name="type">
+            <option value="">Select Type</option>
+            <option value="tv">Series</option>
+            <option value="movie">Movie</option>
+        </select>
+
+        <h3 style="color:white">Genre:</h3>
+        <select id="genre" multiple name="genre">
+            <option value="">Any</option>
+            <option value="12">Comedy</option>
+
+        </select>
+        <br>
+        <br>
+
+        <h3 style="color:white">TMDb Score:</h3>
+        <select id="score" name="score">
+            <option value="">Any</option>
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+            <option value="5">5+</option>
+            <option value="6">6+</option>
+            <option value="7">7+</option>
+            <option value="8">8+</option>
+            <option value="9">9+</option>
+        </select>
+
+        <br>
+        <br>
+        <input type="submit" id="cat_submit" name="cat_submit" onclick="getResults()">
+
+    </form>
+
+    <form align="middle" id="searchForm" name="searchForm">
+
+        <h5 style="color:white;font-size:20px" id="text">Enter the title of a movie or series:</h5>
+
+        <input type="text" id="valueID" name="valueID" placeholder="Search By Title">
+
+        <input type="submit" id="search_submit" name="search_submit" onclick="getSearch()">
+
+    </form>
+
     <div id="root">
-</div>
-</div>
+    </div>
+    </div>
 
-<div id="foot">
-  <hr>
-  <h3 align="middle">Made by Erik Buczek and John O'Neil for SSW 215</h3>
-  </div>
+    <div id="foot">
+        <hr>
+        <h3 align="middle">Made by Erik Buczek and John O'Neil for SSW 215</h3>
+    </div>
 
-  </body>
+</body>
+
 </html>
 
-    <script src="script.js"></script>
+<script src="scriptz.js"></script>
 
-  </body>
+</body>
+
 </html>
