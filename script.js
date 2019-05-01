@@ -1,9 +1,3 @@
-var input = document.getElementById('submit');
-
-var currentUrl = document.URL;
-
-function getResults() {
-
 const app = document.getElementById('root')
 
 const container = document.createElement('div')
