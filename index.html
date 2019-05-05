@@ -30,7 +30,7 @@
 
     <strong><p style="font-size:80px" id="smsnew">ShowMeSomethingNew</p></strong>
 
-    <form align="middle" id="catForm">
+    <form action="results_c.html" method="GET" align="middle" id="catForm">
 
         <h3 style="color:white">Type:</h3>
         <select id="type" name="type">
@@ -41,7 +41,7 @@
 
         <h3 style="color:white">Genre:</h3>
         <select id="genre" multiple name="genre">
-            <option value="Any">Any</option>
+            <option value="">Any</option>
             <option value="Action">Action</option>
             <option value="Anime">Anime</option>
             <option value="British">British</option>
@@ -84,30 +84,24 @@
 
         <br>
         <br>
-        <input type="submit" id="cat_submit" name="cat_submit" onclick="getResults()">
+        <input type="submit" id="cat_submit" name="cat_submit">
 
     </form>
 
-    <form align="middle" id="searchForm" name="searchForm">
+    <form action="results_s.html" method="GET" align="middle" id="searchForm" name="searchForm">
 
         <h3 style="color:white;font-size:20px" id="text">Enter the title of a movie or series:</h5>
 
             <input type="text" id="valueID" name="valueID" placeholder="Search By Title">
 
-            <input type="submit" id="search_submit" name="search_submit" onclick="getSearch()">
+            <input type="submit" id="search_submit" name="search_submit">
 
         </form>
-
-    <div id="root">
-    </div>
-    </div>
 
     <div id="foot">
         <hr>
         <h3 align="middle">Made by Erik Buczek and John O'Neil for SSW 215</h3>
         </div>
-
-        <script src="scriptz.js"></script>
 
 </body>
 
