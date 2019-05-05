@@ -8,7 +8,7 @@
     <title>Find new movies and tv shows!</title>
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="style_r.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -41,9 +41,7 @@
 
     <script>
         let params = new URLSearchParams(document.location.search.substring(1));
-        let c_type = params.get("type");
-        let c_genre = params.get("genre");
-        let c_score = params.get("score");
+        let input = params.get("valueID");
 
         const app = document.getElementById('root')
 
@@ -54,7 +52,7 @@
 
         var request = new XMLHttpRequest()
 
-        request.open('GET', 'https://api.themoviedb.org/3/discover/' + c_type + '?api_key=bc61dce55242b247bc2d74102f24c074&language=en-US&include_adult=false&include_video=false&page=1&vote_average.gte=' + c_score + '&with_genres=' + c_genre, true)
+        request.open('GET', 'https://api.themoviedb.org/3/search/multi?api_key=bc61dce55242b247bc2d74102f24c074&language=en-US&query=' + input + '&page=1&include_adult=false', true)
 
         request.onload = function() {
 
@@ -65,14 +63,14 @@
                     card.setAttribute('class', 'card')
 
                     const h1 = document.createElement('h1')
-                    if (c_type == 'tv') {
+                    if (`${movie.media_type}` == 'tv') {
                         h1.innerHTML = movie.name
                     } else {
                         h1.innerHTML = movie.title
                     }
 
                     const p = document.createElement('p')
-                    if (c_type == 'tv') {
+                    if (`${movie.media_type}` == 'tv') {
                         p.innerHTML = 'First air date: ' + `${movie.first_air_date}` + '<br>' + 'TMDb Score: ' + `${movie.vote_average}`
                     } else {
                         p.innerHTML = 'Release date: ' + `${movie.release_date}` + '<br>' + 'TMDb Score: ' + `${movie.vote_average}`
@@ -85,7 +83,7 @@
                     h4.innerHTML = movie.overview
 
                     const a = document.createElement('a')
-                    a.setAttribute('href', 'https://www.themoviedb.org/' + c_type + '/' + `${movie.id}`)
+                    a.setAttribute('href', 'https://www.themoviedb.org/' + `${movie.media_type}` + '/' + `${movie.id}`)
                     a.innerHTML = 'TMDb Link'
 
                     container.appendChild(card)
