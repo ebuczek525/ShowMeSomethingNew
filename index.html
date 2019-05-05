@@ -8,7 +8,7 @@
     <title>Find new movies and tv shows!</title>
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="style_i.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -30,79 +30,114 @@
 
     <strong><p style="font-size:80px" id="smsnew">ShowMeSomethingNew</p></strong>
 
-    <form action="results_c.html" method="GET" align="middle" id="catForm">
+    <div id="box">
 
-        <h3 style="color:white">Type:</h3>
-        <select id="type" name="type">
-            <option value="">Select Type</option>
-            <option value="tv">Series</option>
-            <option value="movie">Movie</option>
-        </select>
+        <form action="results_c.html" method="GET" align="middle" id="catForm">
 
-        <h3 style="color:white">Genre:</h3>
-        <select id="genre" multiple name="genre">
-            <option value="">Any</option>
-            <option value="Action">Action</option>
-            <option value="Anime">Anime</option>
-            <option value="British">British</option>
-            <option value="Classic and Cult">Classic and Cult</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Crime">Crime</option>
-            <option value="Documentaries">Documentaries</option>
-            <option value="Drama">Drama</option>
-            <option value="Horror">Horror</option>
-            <option value="International">International</option>
-            <option value="K-Dramas">K-Dramas</option>
-            <option value="Kids">Kids</option>
-            <option value="Mysteries">Mysteries</option>
-            <option value="Reality">Reality</option>
-            <option value="Romance">Romance</option>
-            <option value="Sci-Fi/Fantasy">Sci-Fi/Fantasy</option>
-            <option value="Science/Nature">Science/Nature</option>
-            <option value="Spanish Language">Spanish Language</option>
-            <option value="Stand-Up/Talk Shows">Stand-Up/Talk Shows</option>
-            <option value="Teen">Teen</option>
-            <option value="Thriller">Thriller</option>
+            <h3 style="color:white">Type:</h3>
+            <select id="type" name="type" onclick="switchList()">
+                <option value="">Select Type</option>
+                <option value="tv">Series</option>
+                <option value="movie">Movie</option>
+            </select>
 
-        </select>
-        <br>
-        <br>
+            <h3 style="color:white">Genre:</h3>
+            <select id="genre" multiple name="genre">
+            </select>
+            <br>
+            <br>
 
-        <h3 style="color:white">TMDb Score:</h3>
-        <select id="score" name="score">
-            <option value="">Any</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
-            <option value="6">6+</option>
-            <option value="7">7+</option>
-            <option value="8">8+</option>
-            <option value="9">9+</option>
-        </select>
+            <h3 style="color:white">TMDb Score:</h3>
+            <select id="score" name="score">
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+                <option value="6">6+</option>
+                <option value="7">7+</option>
+                <option value="8">8+</option>
+                <option value="9">9+</option>
+            </select>
 
-        <br>
-        <br>
-        <input type="submit" id="cat_submit" name="cat_submit">
+            <br>
+            <br>
+            <input type="submit" id="cat_submit" name="cat_submit">
 
-    </form>
+        </form>
 
-    <form action="results_s.html" method="GET" align="middle" id="searchForm" name="searchForm">
+        <form action="results_s.html" method="GET" align="middle" id="searchForm" name="searchForm">
 
-        <h3 style="color:white;font-size:20px" id="text">Enter the title of a movie or series:</h5>
+            <h3 style="color:white;font-size:20px" id="text">Search by title:</h5>
 
-            <input type="text" id="valueID" name="valueID" placeholder="Search By Title">
+            <input type="text" id="valueID" name="valueID" placeholder="Movie or series title">
 
             <input type="submit" id="search_submit" name="search_submit">
 
         </form>
 
+	</div>
+
     <div id="foot">
         <hr>
         <h3 align="middle">Made by Erik Buczek and John O'Neil for SSW 215</h3>
-        </div>
+    </div>
 
 </body>
+
+<script>
+    function switchList() {
+
+        var t_list = document.getElementById('type');
+        var g_list = document.getElementById('genre');
+        var t_listSelectedValue = t_list.options[t_list.selectedIndex].value;
+
+        if (t_listSelectedValue == 'tv') {
+
+            g_list.options[0] = new Option('', 'Any');
+            g_list.options[1] = new Option('Action & Adventure', '10759');
+            g_list.options[2] = new Option('Animation', '16');
+            g_list.options[3] = new Option('Comedy', '35');
+            g_list.options[4] = new Option('Crime', '80');
+            g_list.options[5] = new Option('Documentary', '99');
+            g_list.options[6] = new Option('Drama', '18');
+            g_list.options[7] = new Option('Family', '10751');
+            g_list.options[8] = new Option('Kids', '10762');
+            g_list.options[9] = new Option('Mystery', '9648');
+            g_list.options[10] = new Option('News', '10763');
+            g_list.options[11] = new Option('Reality', '10764');
+            g_list.options[12] = new Option('Sci-Fi & Fantasy', '10765');
+            g_list.options[13] = new Option('Talk', '10766');
+            g_list.options[14] = new Option('War', '10768');
+            g_list.options[15] = new Option('Western', '37');
+
+        } else if (t_listSelectedValue == 'movie') {
+
+            g_list.options.length = 0;
+            g_list.options[0] = new Option('', 'Any');
+            g_list.options[1] = new Option('Action', '28');
+            g_list.options[2] = new Option('Adventure', '12');
+            g_list.options[3] = new Option('Animation', '16');
+            g_list.options[4] = new Option('Comedy', '35');
+            g_list.options[5] = new Option('Crime', '80');
+            g_list.options[6] = new Option('Documentary', '99');
+            g_list.options[7] = new Option('Drama', '18');
+            g_list.options[8] = new Option('Family', '10751');
+            g_list.options[9] = new Option('Fantasy', '14');
+            g_list.options[10] = new Option('History', '36');
+            g_list.options[11] = new Option('Horror', '27');
+            g_list.options[12] = new Option('Music', '10402');
+            g_list.options[13] = new Option('Mystery', '9648');
+            g_list.options[14] = new Option('Romance', '10749');
+            g_list.options[15] = new Option('Science Fiction', '878');
+            g_list.options[16] = new Option('TV Movie', '10770');
+            g_list.options[17] = new Option('Thriller', '53');
+            g_list.options[18] = new Option('War', '10752');
+            g_list.options[19] = new Option('Western', '37');
+
+        }
+    }
+</script>
 
 </html>
