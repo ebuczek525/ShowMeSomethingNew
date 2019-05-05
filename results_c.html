@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Find new movies and tv shows!</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="head">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+    </div>
+
+    <strong><p style="font-size:80px" id="smsnew">ShowMeSomethingNew</p></strong>
+
+    <div id="root">
+    </div>
+    </div>
+
+    <div id="foot">
+        <hr>
+        <h3 align="middle">Made by Erik Buczek and John O'Neil for SSW 215</h3>
+    </div>
+
+    <script>
+        let params = new URLSearchParams(document.location.search.substring(1));
+        let c_type = params.get("type");
+        let c_genre = params.get("genre");
+        let c_score = params.get("score");
+
+        const app = document.getElementById('root')
+
+        const container = document.createElement('div')
+        container.setAttribute('class', 'container')
+
+        app.appendChild(container)
+
+        var request = new XMLHttpRequest()
+
+        request.open('GET', 'https://api.themoviedb.org/3/discover/' + c_type + '?api_key=bc61dce55242b247bc2d74102f24c074&language=en-US&include_adult=false&include_video=false&page=1&vote_average.gte=' + c_score + '&with_genres=' + c_genre, true)
+
+        request.onload = function() {
+
+            var data = JSON.parse(this.response)
+            if (request.status >= 200 && request.status < 400) {
+                data.results.forEach(movie => {
+                    const card = document.createElement('div')
+                    card.setAttribute('class', 'card')
+
+                    const h1 = document.createElement('h1')
+                    if (c_type == 'tv') {
+                        h1.innerHTML = movie.name
+                    } else {
+                        h1.innerHTML = movie.title
+                    }
+
+                    const p = document.createElement('p')
+                    if (c_type == 'tv') {
+                        p.innerHTML = 'First air date: ' + `${movie.first_air_date}` + '<br>' + 'TMDb Score: ' + `${movie.vote_average}`
+                    } else {
+                        p.innerHTML = 'Release date: ' + `${movie.release_date}` + '<br>' + 'TMDb Score: ' + `${movie.vote_average}`
+                    }
+
+                    const i = document.createElement('img')
+                    i.setAttribute('src', 'http://image.tmdb.org/t/p/w342/' + `${movie.poster_path}`)
+
+                    const h4 = document.createElement('h4')
+                    h4.innerHTML = movie.overview
+
+                    const a = document.createElement('a')
+                    a.setAttribute('href', 'https://www.themoviedb.org/' + c_type + '/' + `${movie.id}`)
+                    a.innerHTML = 'TMDb Link'
+
+                    container.appendChild(card)
+                    card.appendChild(h1)
+                    card.appendChild(p)
+                    card.appendChild(i)
+                    card.appendChild(h4)
+                    card.appendChild(a)
+
+                })
+            } else {
+                const errorMessage = document.createElement('marquee')
+                errorMessage.textContent = `Encountered an error!!`
+                app.appendChild(errorMessage)
+            }
+        }
+
+        request.send();
+    </script>
+
+</body>
+
+</html>
